@@ -78,9 +78,9 @@ class LaserManager extends BaseLaserManager {
       laser,
       config: { damageTable, heatFactor, chargeFactor, dryFactor }
     } of this.lasers) {
-      if (!laser.isCasted(player)) continue;
-
       const count = laser.countCasted(player);
+      if (count === 0) continue;
+
       damage +=
       (damageTable[player.ballType] ?? damageTable.Default) * count;
       heat += heatFactor * count;
